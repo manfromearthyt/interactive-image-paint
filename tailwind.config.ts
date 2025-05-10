@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Indian art inspired colors
+				kathakali: {
+					red: '#D32F2F',
+					green: '#388E3C',
+					blue: '#1976D2',
+					yellow: '#FBC02D',
+					orange: '#F57C00',
+					purple: '#7B1FA2',
+					pink: '#C2185B',
+					teal: '#00796B',
+					brown: '#5D4037',
+					black: '#212121',
 				}
 			},
 			borderRadius: {
@@ -84,11 +98,17 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'color-select': {
+					'0%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.1)' },
+					'100%': { transform: 'scale(1)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'color-select': 'color-select 0.3s ease-in-out'
 			}
 		}
 	},
