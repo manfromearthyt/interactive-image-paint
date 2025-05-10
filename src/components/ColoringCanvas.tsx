@@ -103,8 +103,9 @@ const ColoringCanvas: React.FC<ColoringCanvasProps> = ({
     if (ctx) {
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
       ctx.drawImage(originalCanvas, 0, 0);
-      toast("Canvas reset to original", {
+      toast("Canvas reset", {
         position: "top-right",
+        duration: 1500,
       });
     }
   };
@@ -113,29 +114,30 @@ const ColoringCanvas: React.FC<ColoringCanvasProps> = ({
     if (!canvasRef.current) return;
     
     const link = document.createElement("a");
-    link.download = "my-kathakali-artwork.png";
+    link.download = "kathakali-artwork.png";
     link.href = canvasRef.current.toDataURL("image/png");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     
-    toast.success("Artwork downloaded successfully!", {
+    toast.success("Artwork saved successfully", {
       position: "top-center",
+      duration: 1500,
     });
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-      <div className="relative">
+    <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+      <div className="relative bg-white/20 p-4 rounded-xl backdrop-blur-sm shadow-lg border border-white/30 transition-all duration-300 hover:shadow-xl">
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-75 rounded-lg">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-kathakali-blue"></div>
+          <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-sm rounded-xl">
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-kathakali-blue"></div>
           </div>
         )}
         
         <canvas
           ref={canvasRef}
-          className="border-2 border-gray-300 rounded-lg shadow-lg cursor-pointer max-w-full h-auto touch-none"
+          className="rounded-lg shadow-inner cursor-pointer max-w-full h-auto touch-none transition-all duration-300"
           onClick={handleCanvasClick}
           style={{ 
             display: isLoading ? "none" : "block",
